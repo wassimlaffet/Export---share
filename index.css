@@ -1,0 +1,117 @@
+﻿body {
+}
+
+.kpi {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    box-shadow: 8px 8px 8px #aaa;
+}
+
+    .kpi .top {
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 25px;
+        font-weight: bold;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-top-right-radius: 5px;
+        width: 98.7%; 
+        background-color: rgba(0, 0, 0, 0.3); 
+        height: 25px; font-size: 15px; 
+        font-weight: bold; 
+        padding-top: 5px; 
+        padding-left: 5px;
+        color: #fff;
+    }
+
+    .kpi .value {
+        width: 100%;
+        height: 120px;
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 90pt;
+    }
+
+    .kpi .metric {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 10pt;
+    }
+
+    .kpi .footer {
+        width: 100%;
+        height: 110px;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+        .kpi .footer table {
+            width: 100%;
+            height: 100%;
+        }
+
+            .kpi .footer table .footerTop {
+                height: 30px;
+                font-size: 8pt;
+                font-weight: bold;
+                text-align: left;
+                vertical-align: top;
+            }
+
+                .kpi .footer table .footerTop .color {
+                    width: 10px;
+                }
+
+                    .kpi .footer table .footerTop .color div {
+                        width: 10px;
+                        height: 10px;
+                        border-width: 0px;
+                        margin-top: 1px;
+                    }
+
+                .kpi .footer table .footerTop .text {
+                    width: 50px;
+                }
+
+            .kpi .footer table .footerContent {
+                height: 25px;
+                color: white;
+                font-size: 8pt;
+                font-weight: bold;
+            }
+
+.firstExploration {
+    /*margin-left: 10%;*/
+    border: 1px solid lightgrey;
+    height: 300px;
+    border-radius: 5px;
+    overflow:hidden;
+    background: #ffffff;
+    box-shadow: 8px 8px 8px #aaa;
+}
+
+    .firstExploration .titleFirstExploration {
+        width: 100%;
+        height: 10px;
+        background-color: grey;
+    }
+
+.secondExploration {
+    /*margin-left: 10%;*/
+    border: 1px solid lightgrey;
+    height: 300px;
+    border-radius: 5px;
+    overflow:hidden;
+    background: #ffffff;
+    box-shadow: 8px 8px 8px #aaa;
+}
+
+    .secondExploration .titleSecondExploration {
+        width: 100%;
+        height: 10px;
+        background-color: grey;
+    }

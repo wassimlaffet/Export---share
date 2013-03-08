@@ -1,0 +1,600 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="index.css" rel="stylesheet" />
+    <script src="http://d3js.org/d3.v3.js"></script>
+    <link href="themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
+    <script src="themes/1/js-image-slider.js" type="text/javascript"></script>
+    <link href="generic.css" rel="stylesheet" type="text/css" />
+    <link href="accordion.css" rel="stylesheet" type="text/css" />
+    <script src="harlemShake.js"></script>
+    <link href="harlemShake.css" rel="stylesheet" />
+    
+    <script src="jquery-min.js"></script>
+    <script src="jquery-custom-min.js"></script>
+    <style>
+
+        body {
+          font: 10px sans-serif;
+          background:#fff url(/images/bg_html.jpg) repeat;
+        }
+
+        .axis path,
+        .axis line {
+          fill: none;
+          stroke: #000;
+          shape-rendering: crispEdges;
+        }
+
+        .x.axis path {
+          display: none;
+        }
+
+        .line {
+          fill: none;
+          stroke: steelblue;
+          stroke-width: 1.5px;
+        }
+
+        .arc path {
+          stroke: #fff;
+        }
+
+    </style>
+
+</head>
+<body>
+    <button onclick="doTheHarlemShake()" style="width:100%; background-color:black; color:white;">D'ont click</button>
+
+    <div>
+        <a href="javascript:void(location.href='http://www.pdfspot.com/html-to-pdf-converter.aspx?url=' + escape(location.href)+'&pdf_name=' + escape('') + '&pdf_orientation=portrait&pdf_page_size=A4&scripts_enabled=true' )" 
+                        title="Convert HTML to PDF" style="font-family: Verdana;font-size: 12px; color: #4579ae; text-decoration: none">
+            <img src="http://www.pdfspot.com/pdfimg.aspx" alt="Convert HTML to PDF" style="border-style: none" />&nbsp;Save As PDF 
+        </a>
+        <noscript>
+            <a href="http://www.pdfspot.com" title="HTML to PDF">Online HTML to PDF Converter</a>
+        </noscript>
+    </div>
+
+    <ul class="accordion">
+        <li id="group1" class="files" style="visibility:hidden"><a href="#group1">First Group Name<span>1</span></a>
+            <div id="sliderFrame" class="sliderFrame sub-menu">
+                <div id="slider" class="slider">
+                    <a>
+                        <div id="widgetContainer" class="widgetContainer" style="width: 100%; height: 300px; margin-left: auto; margin-right: auto;">
+                            <table cellpadding="10px" cellspacing="10px" width="100%">
+                                <tr>
+                                    <td>
+                                        <div id="kpi" class="kpi">
+                                            <div class="top" style=""> Latest KPI info</div>
+                                            <div class="value">30</div>
+                                            <div class="metric">visits today</div>
+                                            <div class="footer">
+                                                <table>
+                                                    <tr class="footerTop">
+                                                        <td class="color">
+                                                            <div style="background-color: orange;"></div>
+                                                        </td>
+                                                        <td class="text">Yesterday</td>
+                                                        <td class="color">
+                                                            <div style="background-color: blue;"></div>
+                                                        </td>
+                                                        <td class="text">Same date Last year</td>
+                                                        <td class="color">
+                                                            <div style="background-color: green;"></div>
+                                                        </td>
+                                                        <td class="text">total this month</td>
+                                                        <td class="color">
+                                                            <div style="background-color: red;"></div>
+                                                        </td>
+                                                        <td class="text">total this year</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="footerContent">
+                                                        <td colspan="9">
+                                                            <table>
+                                                                <tr>
+                                                                    <td style="width: 23%; background-color: orange;"><div class="yesterday"></div></td>
+                                                                    <td style="width: 37%; background-color: blue;"><div class="lastYear"></div></td>
+                                                                    <td style="width: 23%; background-color: green;"><div class="totalMonth"></div></td>
+                                                                    <td style="width: 17%; background-color: red;"><div class="totalYear"></div></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="firstExploration" class="firstExploration">
+                                            <div class="titleFirstExploration" style=" -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 99.5%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px;color:#fff;"> Visits evolution by medium since 1st january</div>
+                                            <svg id="svgFirstExploration" class="svgFirstExploration"></svg>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="secondExploration" class="secondExploration">
+                                            <div class="titleSecondExploration" style="-webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 98.8%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px;color:#fff;"> 5 most important country visitors</div>
+                                            <svg id="svgSecondExploration" class="svgSecondExploration"></svg>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src="" alt="visits ..." />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+
+        <li id="group2" class="files"style="visibility:hidden"><a href="#group2">Second Group Name<span class="nbWidgetsSecondGroup">2</span></a>
+            <div id="sliderFramegroup2" class="sliderFrame sub-menu">
+                <div id="slidergroup2" class="slider">
+                    <a class="group2w1" style="display:none">
+                        <div id="widgetContainergroup2" class="widgetContainer" style="width: 100%; height: 300px; margin-left: auto; margin-right: auto;">
+                            <table cellpadding="10px" cellspacing="10px" width="100%">
+                                <tr>
+                                    <td>
+                                        <div id="kpigroup2" class="kpi">
+                                            <div class="top" style=""> Latest KPI info</div>
+                                            <div class="value">30</div>
+                                            <div class="metric">new visits</div>
+                                            <div class="footer">
+                                                <table>
+                                                    <tr class="footerTop">
+                                                        <td class="color">
+                                                            <div style="background-color: orange;"></div>
+                                                        </td>
+                                                        <td class="text">Yesterday</td>
+                                                        <td class="color">
+                                                            <div style="background-color: blue;"></div>
+                                                        </td>
+                                                        <td class="text">Same date Last year</td>
+                                                        <td class="color">
+                                                            <div style="background-color: green;"></div>
+                                                        </td>
+                                                        <td class="text">total this month</td>
+                                                        <td class="color">
+                                                            <div style="background-color: red;"></div>
+                                                        </td>
+                                                        <td class="text">total this year</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="footerContent">
+                                                        <td colspan="9">
+                                                            <table>
+                                                                <tr>
+                                                                    <td style="width: 23%; background-color: orange;"><div class="yesterday"></div></td>
+                                                                    <td style="width: 37%; background-color: blue;"><div class="lastYear"></div></td>
+                                                                    <td style="width: 23%; background-color: green;"><div class="totalMonth"></div></td>
+                                                                    <td style="width: 17%; background-color: red;"><div class="totalYear"></div></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="firstExplorationgroup2" class="firstExploration">
+                                            <div class="titleFirstExploration" style=" -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 99.5%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px; color:#fff;"> Evolution by medium since 1st january</div>
+                                            <svg id="svgFirstExplorationgroup2" class="svgFirstExploration"></svg>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="secondExplorationgroup2" class="secondExploration">
+                                            <div class="titleSecondExploration" style="-webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 98.8%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px; color:#fff;"> 5 most important country new visits</div>
+                                            <svg id="svgSecondExplorationgroup2" class="svgSecondExploration"></svg>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src="" alt="new visits ..." />
+                        </div>
+                    </a> 
+                    <a class="group2w2" style="visibility:hidden;">
+                        <div id="widgetContainergroup2widget2" class="widgetContainer" style="width: 100%; height: 300px; margin-left: auto; margin-right: auto;">
+                            <table cellpadding="10px" cellspacing="10px" width="100%">
+                                <tr>
+                                    <td>
+                                        <div id="kpigroup2widget2" class="kpi">
+                                            <div class="top" style=""> KPI info</div>
+                                            <div class="value">30</div>
+                                            <div class="metric">bounces</div>
+                                            <div class="footer">
+                                                <table>
+                                                    <tr class="footerTop">
+                                                        <td class="color">
+                                                            <div style="background-color: orange;"></div>
+                                                        </td>
+                                                        <td class="text">Yesterday</td>
+                                                        <td class="color">
+                                                            <div style="background-color: blue;"></div>
+                                                        </td>
+                                                        <td class="text">Same date Last year</td>
+                                                        <td class="color">
+                                                            <div style="background-color: green;"></div>
+                                                        </td>
+                                                        <td class="text">total this month</td>
+                                                        <td class="color">
+                                                            <div style="background-color: red;"></div>
+                                                        </td>
+                                                        <td class="text">total this year</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr class="footerContent">
+                                                        <td colspan="9">
+                                                            <table>
+                                                                <tr>
+                                                                    <td style="width: 23%; background-color: orange;"><div class="yesterday"></div></td>
+                                                                    <td style="width: 37%; background-color: blue;"><div class="lastYear"></div></td>
+                                                                    <td style="width: 23%; background-color: green;"><div class="totalMonth"></div></td>
+                                                                    <td style="width: 17%; background-color: red;"><div class="totalYear"></div></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="firstExplorationgroup2widget2" class="firstExploration">
+                                            <div class="titleFirstExploration" style=" -webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 99.5%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px;color:#fff;"> Evolution by medium since 1st january</div>
+                                            <svg id="svgFirstExplorationgroup2widget2" class="svgFirstExploration"></svg>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="secondExplorationgroup2widget2" class="secondExploration">
+                                            <div class="titleSecondExploration" style="-webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px; width: 98.8%; background-color: rgba(0, 0, 0, 0.3); height: 25px; font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px;color:#fff;"> 5 most important country bounces</div>
+                                            <svg id="svgSecondExplorationgroup2widget2" class="svgSecondExploration"></svg>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <img src="" alt="bounces ..." />
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <audio id="aud" style="display:none" controls>
+      <source src="harlem-shake.ogg" type="audio/ogg">
+    </audio>
+
+    <img id="dance" src="troll.gif" style="display:none; width: 200px; margin-left: auto; margin-right: auto;" />
+
+    <script>
+        var metrics = [];
+        metrics.push({ name: "visits" });
+        metrics.push({ name: "new" });
+        metrics.push({ name: "bounces" });
+
+        function setKpiData(file, kpiId) {
+            d3.tsv(file, function (error, data) {
+                var totalMonth = 0;
+                var totalYear = 0;
+
+                data.forEach(function (d) {
+                    var parseDate = d3.time.format("%Y%m%d").parse;
+                    d.date = parseDate(d.date);
+                    var toDay = new Date();
+                    var currentDate = new Date(d.date);
+                    
+
+                    if ((toDay.getDate() == currentDate.getDate()) && (toDay.getMonth() == currentDate.getMonth())) {
+                        document.querySelector("#"+kpiId).querySelector(".value").innerText = d.visits;
+                        document.querySelector("#"+kpiId).querySelector(".yesterday").innerText = d.yesterday;
+                        document.querySelector("#" + kpiId).querySelector(".lastYear").innerText = d.lastyear;
+                    }
+
+                    if(toDay >= currentDate && toDay.getMonth() == currentDate.getMonth()) {
+                        totalMonth++;
+                    }
+
+                    if(toDay >= currentDate && toDay.getMonth() >= currentDate.getMonth()) {
+                        totalYear++;
+                    }
+
+                });
+
+                document.querySelector("#" + kpiId).querySelector(".totalMonth").innerText = totalMonth;
+                document.querySelector("#" + kpiId).querySelector(".totalYear").innerText = totalYear;
+            });
+        }
+
+        function drawMultiLine(file, svgId) {
+            //multi lines
+            var margin = { top: 20, right: 80, bottom: 70, left: 30 },
+                width = document.querySelectorAll("#slider")[0].clientWidth * (2 / 5),
+                height = document.querySelectorAll("#slider")[0].clientHeight * 6 / 10;
+
+            var parseDate = d3.time.format("%Y%m%d").parse;
+
+            var x = d3.time.scale()
+                .range([0, width]);
+
+            var y = d3.scale.linear()
+                .range([height, 0]);
+
+            var color = d3.scale.category10();
+
+            var xAxis = d3.svg.axis()
+                .scale(x)
+                .orient("bottom");
+
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left");
+
+            var line = d3.svg.line()
+                .interpolate("basis")
+                .x(function (d) { return x(d.date); })
+                .y(function (d) { return y(d.temperature); });
+
+            var svgLine = d3.selectAll("#" + svgId).attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            d3.tsv(file, function (error, data) {
+                color.domain(d3.keys(data[0]).filter(function (key) { return key !== "date"; }));
+
+                data.forEach(function (d) {
+                    d.date = parseDate(d.date);
+                });
+
+                var cities = color.domain().map(function (name) {
+                    return {
+                        name: name,
+                        values: data.map(function (d) {
+                            return { date: d.date, temperature: +d[name] };
+                        })
+                    };
+                });
+
+                x.domain(d3.extent(data, function (d) { return d.date; }));
+
+                y.domain([
+                  d3.min(cities, function (c) { return d3.min(c.values, function (v) { return v.temperature; }); }),
+                  d3.max(cities, function (c) { return d3.max(c.values, function (v) { return v.temperature; }); })
+                ]);
+
+                svgLine.append("g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(xAxis);
+
+                svgLine.append("g")
+                    .attr("class", "y axis")
+                    .call(yAxis);
+
+                var city = svgLine.selectAll(".city")
+                    .data(cities)
+                  .enter().append("g")
+                    .attr("class", "city");
+
+                city.append("path")
+                    .attr("class", "line")
+                    .attr("d", function (d) { return line(d.values); })
+                    .style("stroke", function (d) { return color(d.name); });
+
+                city.append("text")
+                    .datum(function (d) { return { name: d.name, value: d.values[d.values.length - 1] }; })
+                    .attr("transform", function (d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
+                    .attr("x", 3)
+                    .attr("dy", ".35em")
+                    .text(function (d) { return d.name; });
+            });
+        }
+        
+        function drawPie(file, svgId) {
+            //pie 
+            var widthPie = document.querySelectorAll("#slider")[0].clientWidth / 4,
+                heightPie = document.querySelectorAll("#slider")[0].clientHeight * 6 / 10,
+                radius = Math.min(widthPie, heightPie) / 2;
+
+            var color = d3.scale.ordinal()
+                .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+            var arc = d3.svg.arc()
+                .outerRadius(radius - 10)
+                .innerRadius(0);
+
+            var pie = d3.layout.pie()
+                .sort(null)
+                .value(function(d) { return d.visits; });
+
+            var svgPie = d3.selectAll("#" + svgId)
+                .attr("width", widthPie)
+                .attr("height", heightPie)
+              .append("g")
+                .attr("transform", "translate(" + widthPie / 2 + "," + heightPie / 2 + ")");
+
+            d3.csv(file, function (error, data) {
+
+                data.forEach(function(d) {
+                    d.visits = +d.visits;
+                });
+
+                var g = svgPie.selectAll(".arc")
+                    .data(pie(data))
+                  .enter().append("g")
+                    .attr("class", "arc");
+
+                g.append("path")
+                    .attr("d", arc)
+                    .style("fill", function(d) { return color(d.data.country); });
+
+                //g.append("text")
+                //    .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+                //    .attr("dy", ".35em")
+                //    .style("text-anchor", "middle")
+                //    .text(function(d) { return d.data.country; });
+
+                var legend = d3.select("#" + svgId).append("svg")
+                  .attr("class", "legend")
+                  .attr("width", radius * 2)
+                  .attr("height", radius * 2)
+                .selectAll("g")
+                  .data(color.domain().slice().reverse())
+                .enter().append("g")
+                  .attr("transform", function (d, i) { return "translate(10," + (i + 1) * 20 + ")"; });
+
+                            legend.append("rect")
+                                .attr("width", 18)
+                                .attr("height", 18)
+                                .style("fill", color);
+
+                            legend.append("text")
+                                .attr("x", 24)
+                                .attr("y", 9)
+                                .attr("dy", ".35em")
+                                .text(function (d) { return d; });
+            });
+        }
+
+        var nbWidgetsSecondGroup = 0;
+        for (var i = 0; i < metrics.length; i++) {
+            if (metrics[i].name == "visits") {
+                document.querySelector("#group1").style.visibility = "visible";
+                setKpiData("/data/visits/kpi.tsv", "kpi");
+                drawMultiLine("/data/visits/data.tsv", "svgFirstExploration");
+                drawPie("/data/visits/data.csv", "svgSecondExploration");
+            }
+
+            if (metrics[i].name == "new") {
+                document.querySelector("#group2").style.visibility = "visible";
+                document.querySelector(".group2w1").style.visibility = "visible";
+                setKpiData("/data/new/kpi.tsv", "kpigroup2");
+                drawMultiLine("/data/new/data.tsv", "svgFirstExplorationgroup2");
+                drawPie("/data/new/data.csv", "svgSecondExplorationgroup2");
+                nbWidgetsSecondGroup++;
+            }
+
+            if (metrics[i].name == "bounces") {
+                document.querySelector("#group2").style.visibility = "visible";
+                document.querySelector(".group2w2").style.visibility = "visible";
+                setKpiData("/data/bounces/kpi.tsv", "kpigroup2widget2");
+                drawMultiLine("/data/bounces/data.tsv", "svgFirstExplorationgroup2widget2");
+                drawPie("/data/bounces/data.csv", "svgSecondExplorationgroup2widget2");
+                nbWidgetsSecondGroup++;
+            }
+        }
+
+        if (nbWidgetsSecondGroup > 0) {
+            document.querySelector(".nbWidgetsSecondGroup").innerText = nbWidgetsSecondGroup;
+        }
+
+        var sliderOptions = {
+            sliderId: "slider",
+            effect: "series1",
+            effectRandom: false,
+            pauseTime: 2600,
+            transitionTime: 500,
+            slices: 12,
+            boxes: 8,
+            hoverPause: true,
+            autoAdvance: false,
+            captionOpacity: 0.3,
+            captionEffect: "fade",
+            thumbnailsWrapperId: "thumbs",
+            m: false,
+            license: "mylicense"
+        };
+
+        var imageSlider = new mcImgSlider(sliderOptions);
+
+        var sliderOptionsgroup2 = {
+            sliderId: "slidergroup2",
+            effect: "series1",
+            effectRandom: false,
+            pauseTime: 2600,
+            transitionTime: 500,
+            slices: 12,
+            boxes: 8,
+            hoverPause: true,
+            autoAdvance: false,
+            captionOpacity: 0.3,
+            captionEffect: "fade",
+            thumbnailsWrapperId: "thumbs",
+            m: false,
+            license: "mylicense"
+        };
+
+        var imageSlidergroup2 = new mcImgSlider(sliderOptionsgroup2);
+
+
+
+
+
+
+
+
+
+
+
+
+            //the harlem shake
+        function doTheHarlemShake() {
+            dance.style.display = "block";
+            aud.play();
+            var shake = new HarlemShake("group1", {
+            startAfter: 0,
+            shakeStyle: "shake",
+            applyToChild: false
+        });
+
+            var offset = 6000;
+
+            shake.add("group2", {
+            startAfter: offset,
+            shakeStyle: "swing"
+        });
+
+            offset = 15100;
+
+            shake.add("slider", {
+            startAfter: offset,
+            shakeStyle: "flash"
+        });
+            shake.add("kpi", {
+            startAfter: offset,
+            shakeStyle: "bounce"
+        });
+            shake.add("firstExploration", {
+            startAfter: offset,
+            shakeStyle: "tada"
+        });
+
+            shake.add("secondExploration", {
+            startAfter: offset,
+            shakeStyle: "wobble"
+        });
+
+            //shake.add("test6", {
+            //    startAfter: offset,
+            //    shakeStyle: "pulse"
+            //});
+            //shake.add("test7", {
+            //    startAfter: offset,
+            //    shakeStyle: "flip"
+            //});
+            //shake.add("heading", {
+            //    startAfter: offset,
+            //    shakeStyle: "rotate"
+            //});
+
+
+            setTimeout(function () {
+                shake.stop();
+                dance.style.display = "none";
+        },
+            30000);
+        }
+    </script>
+</body>
+</html>
